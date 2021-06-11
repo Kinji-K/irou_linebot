@@ -10,14 +10,13 @@ class LinePost:
             json_load = json.load(f)
 
             YOUR_CHANNEL_ACCESS_TOKEN = json_load["YOUR_CHANNEL_ACCESS_TOKEN"]
-            self.USER_ID = json_load["USER_ID"]
 
         self.api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 
     def MsgPost(self,msg):
         messages = TextSendMessage(text=msg)
-        self.api.push_message(self.USER_ID, messages=messages)
+        self.api.broadcast( messages=messages)
 
 if __name__ == "__main__":
     post = LinePost()
-    post.MsgPost("Hello Line!")
+    post.MsgPost("Hello irodoku world!")
